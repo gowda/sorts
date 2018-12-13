@@ -1,0 +1,36 @@
+{
+  "name": "sorts",
+  "version": "0.42.0",
+  "main": "index.js",
+  "repository": "https://github.com/gowda/sorts",
+  "author": "Basavanagowda Kanur",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "pretest": "yarn lint",
+    "test": "gulp test",
+    "lint": "gulp lint",
+    "prebuild": "yarn lint",
+    "build": "yarn lint && gulp build",
+    "watch": "gulp watch",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/rewire": "^2.5.28",
+    "chai": "^4.2.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-mocha": "^6.0.0",
+    "gulp-tslint": "^8.1.3",
+    "gulp-typescript": "^5.0.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.8",
+    "rewire": "^4.0.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2",
+    "typescript-tslint-plugin": "^0.2.0"
+  }
+}
