@@ -1,0 +1,51 @@
+plugins {
+  id 'java'
+  id 'org.jetbrains.kotlin.jvm' version '1.3.10'
+}
+
+apply plugin: "application"
+
+group 'in.kanur'
+version '0.42-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+  testImplementation "org.jetbrains.kotlin:kotlin-test:1.3.10"
+
+  testImplementation('org.spekframework.spek2:spek-dsl-jvm:2.0.0-rc.1')
+  testRuntimeOnly('org.spekframework.spek2:spek-runner-junit5:2.0.0-rc.1')
+}
+
+compileKotlin {
+  kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+  kotlinOptions.jvmTarget = "1.8"
+}
+
+test {
+  useJUnitPlatform {
+    includeEngines 'spek2'
+  }
+}
+
+// reporting of individual test run is missing by default
+// https://medium.com/android-testing-daily/running-your-tests-on-the-command-line-with-gradle-bcba78244487
+// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html
+tasks.withType(Test) {
+  testLogging {
+    exceptionFormat "full"
+    events "skipped", "passed", "failed"
+    showStandardStreams true
+  }
+}
+
+mainClassName = "net.mydomain.kotlinlearn.MainKt"
