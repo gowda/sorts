@@ -1,14 +1,23 @@
-language: java
+matrix:
+  include:
+    - language: java
 
-install: ./kotlin/gradlew -b kotlin/build.gradle assemble
+      install: ./kotlin/gradlew -b kotlin/build.gradle assemble
 
-# https://docs.travis-ci.com/user/languages/java/#caching
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+      # https://docs.travis-ci.com/user/languages/java/#caching
+      before_cache:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+      cache:
+        directories:
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
 
-script: ./kotlin/gradlew -b kotlin/build.gradle test
+      script: ./kotlin/gradlew -b kotlin/build.gradle test
+
+    - language: node_js
+      node_js: "v8.11.3"
+      before_install: cd typescript
+      install: yarn install
+      script: yarn test
+      after_script: cd ..
