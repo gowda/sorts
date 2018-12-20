@@ -21,3 +21,9 @@ matrix:
       install: yarn install
       script: yarn test
       after_script: cd ..
+
+    - language: ruby
+      rvm:
+        - 2.3.1
+      before_install: cd ruby
+      after_script: cd ..

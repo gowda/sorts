@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - "bin/**/*"
+    - "spec/spec_helper.rb"
+    - "vendor/bundle/**/*" # https://github.com/rubocop-hq/rubocop/issues/6398#issuecomment-431698999
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - "spec/**/*"
